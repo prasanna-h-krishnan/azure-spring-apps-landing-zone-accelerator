@@ -58,7 +58,7 @@ As you prepare to deploy spring applications to Azure Spring Apps, ensure that t
   - Charts in each application overview page
   - Common metrics page
 - Metrics can also be queried from Log Analytics in the AzureMetrics table.
-![metrics.](docs/Design-Areas/images/monitoring-metrics.jpg)
+![metrics.](../docs/Design-Areas/images/monitoring-metrics.jpg)
 
 ![live metrics.](docs/Design-Areas/images/monitoring-live-metrics.jpg)
 
