@@ -58,13 +58,13 @@ As you prepare to deploy spring applications to Azure Spring Apps, ensure that t
   - Charts in each application overview page
   - Common metrics page
 - Metrics can also be queried from Log Analytics in the AzureMetrics table.
-  
+![metrics.] (docs/Design-Areas/images/monitoring-metrics.jpg)
 2. Logs
 - Use the Diagnostics setting page within Azure Spring Apps to configure the desired combination of diagnostic setting for your apps.
 - Note that there is a delay of upto 15 minutes for logs to appear in your storage account, your event hub, or Log Analytics. If the Spring app instances are deleted or moved in the interim, the diagnostic settings should be deleted too to ensure that another app with the same resource id does not reuse the same diagnostic setting.
 - Azure Spring Apps allows you to collect Spring Cloud Resilience4j metrics into Application Insights.
 - Enable the Java In-Process agent and configure dimension collection for resilience4j metrics within Application Insights which will then allow you to view resilience4j metrics with Azure Spring Apps.
-
+![logs.] (docs/Design-Areas/images/monitoring-logs.jpg)
 3. Distributed Tracing
 - Use Application Insights created by Azure Spring Apps 
 -	The Application Map blade in App Insights showcases all the dependencies and traces.
