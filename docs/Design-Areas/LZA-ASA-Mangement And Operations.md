@@ -58,25 +58,31 @@ As you prepare to deploy spring applications to Azure Spring Apps, ensure that t
   - Charts in each application overview page
   - Common metrics page
 - Metrics can also be queried from Log Analytics in the AzureMetrics table.
+  
 ![metrics.](../Design-Areas/images/monitoring-metrics.jpg)
 
-![live metrics.](docs/Design-Areas/images/monitoring-live-metrics.jpg)
+![live metrics.](../Design-Areas/images/monitoring-live-metrics.jpg)
 
 2. Logs
 - Use the Diagnostics setting page within Azure Spring Apps to configure the desired combination of diagnostic setting for your apps.
 - Note that there is a delay of upto 15 minutes for logs to appear in your storage account, your event hub, or Log Analytics. If the Spring app instances are deleted or moved in the interim, the diagnostic settings should be deleted too to ensure that another app with the same resource id does not reuse the same diagnostic setting.
 - Azure Spring Apps allows you to collect Spring Cloud Resilience4j metrics into Application Insights.
 - Enable the Java In-Process agent and configure dimension collection for resilience4j metrics within Application Insights which will then allow you to view resilience4j metrics with Azure Spring Apps.
-![logs.](docs/Design-Areas/images/monitoring-logs.jpg)
+
+![logs.](../Design-Areas/images/monitoring-logs.jpg)
+
 3. Distributed Tracing
 - Use Application Insights created by Azure Spring Apps 
 -	The Application Map blade in App Insights showcases all the dependencies and traces.
 -	Use the Performance/Dependencies/Exception blades to dive deeper into issues or view parts of the application that can be potential bottlenecks.
 - Use the End-to-end transaction details to view the end to end transactions.
 -	Azure Spring Apps integrates Spring Cloud Sleuth and Zipkin with Application Insights.
-![performance.](docs/Design-Areas/images/monitoring-performance.jpg)
-![failures.](docs/Design-Areas/images/monitoring-failures.jpg)
-![application map](docs/Design-Areas/images/monitoring-application-map.jpg)
+
+![performance.](../Design-Areas/images/monitoring-performance.jpg)
+
+![failures.](../Design-Areas/images/monitoring-failures.jpg)
+
+![application map](../Design-Areas/images/monitoring-application-map.jpg)
 
 
 #### Service Discovery
@@ -87,11 +93,15 @@ As you prepare to deploy spring applications to Azure Spring Apps, ensure that t
     - You can configure your applications (via annotations) which then gets picked up by the Spring Cloud Service Registry server to maintain a list of live apps. 
 - Enterprise Tier provides the [Tanzu Service Registry](https://learn.microsoft.com/en-us/azure/spring-apps/how-to-enterprise-service-registry) which uses annotations to identify applications that are discovered and registered as services which can then be called by other apps/services.
 
+![api portal.](../Design-Areas/images/monitoring-api-portal.jpg)
+
 #### Health Probes
 - Always use the readiness and liveness probes together so that apps are removed from Kubernetes Service Discovery as well as Managed Service Discovery using Eureka
 - If you have an app that has a longer startup time, make sure to adjust the total timeout i.e. initialDelaySeconds + periodSeconds * failureThreshold to a value longer than the start time of your application. This will help avoid the probe to fail and hence force the app to restart
 - For Spring Boot applications, you can take advantage of Actuator health indicators to configure your health probes. 
-![health probes.](docs/Design-Areas/images/monitoring-health-probes.jpg)
+
+![health probes.](../Design-Areas/images/monitoring-health-probes.jpg)
+
 #### Redundancy
 - Select the zone-redunant option when you create a new Azure Spring Apps instance to ensure that your apps are deployed across [multiple availability zones](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/spring-apps/how-to-enable-redundancy-and-disaster-recovery.md#create-an-azure-spring-apps-instance-with-zone-redundancy-enabled)
 - If your application needs to be redundant across regions, deploy the solution in more than one region and use Traffic Manager or Azure Front Door to balance load between these deployments.
